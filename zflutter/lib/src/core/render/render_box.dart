@@ -2,13 +2,18 @@ import 'package:flutter/rendering.dart';
 
 import '../core.dart';
 
-class RenderZBox extends RenderBox {
+abstract class RenderZBox extends RenderBox {
   double sortValue = 0;
 
   ZVector origin = ZVector.zero;
 
   void performSort() {
     sortValue = this.origin.z;
+  }
+
+  @override
+  Size computeDryLayout(BoxConstraints constraints) {
+    return constraints.biggest;
   }
 }
 
